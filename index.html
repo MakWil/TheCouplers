@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Couplers Code Smell</title>
+</head>
+<body>
+    <header>
+        <h1>The Couplers Code Smell</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <p>The Couplers code smell occurs when one class is overly dependent on another class or multiple other classes.</p>
+        </section>
+        <section>
+            <h2>Types of Couplers</h2>
+            <p>There are several types of couplers, including:</p>
+            <ul>
+                <li><strong>Feature Envy:</strong> When a class uses methods or properties of another class excessively.</li>
+                <li><strong>Inappropriate Intimacy:</strong> When classes are too tightly coupled, knowing too much about each other's implementation details.</li>
+                <li><strong>Message Chain:</strong> When a client sends a series of messages to navigate through objects to get the desired information.</li>
+                <li><strong>Middle Man:</strong> When a class delegates too much to another class, acting as a middle man without adding much value.</li>
+                <li><strong>Incomplete Library Class:</strong> When a library class lacks necessary functionality, leading to clients adding code to complete its functionality.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Example</h2>
+            <p>Here's an example of Feature Envy:</p>
+            <pre><code>
+class Order
+  def total_price
+    line_items.sum(&:price)
+  end
+end
+
+class LineItem
+  def price
+    product.price * quantity
+  end
+end
+            </code></pre>
+            <p>In this example, the `Order` class is overly dependent on the `LineItem` class to calculate the total price.</p>
+        </section>
+    </main>
+    <footer>
+        <p>For more information on code smells, visit <a href="https://en.wikipedia.org/wiki/Code_smell">Wikipedia</a>.</p>
+    </footer>
+</body>
+</html>
